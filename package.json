@@ -1,0 +1,37 @@
+{
+  "name": "social-login-jwt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Virasack/social-login-jwt.git"
+  },
+  "author": "Nicolas Bovorasmy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Virasack/social-login-jwt/issues"
+  },
+  "homepage": "https://github.com/Virasack/social-login-jwt#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "latest",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "latest",
+    "express": "^4.15.2",
+    "express-session": "^1.15.1",
+    "jsonwebtoken": "^7.3.0",
+    "mongoose": "latest",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0"
+  }
+}
