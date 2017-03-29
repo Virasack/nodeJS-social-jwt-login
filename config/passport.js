@@ -83,15 +83,12 @@ module.exports = function(passport) {
 					if(!user.validPassword(password)){
 						return done(null, false, req.flash('loginMessage', 'Invalid password'));
 					}
+
 					var userToken = {
 						id : user.id
 					}
-
-					var token = jwt.sign(userToken, configAuth.secret, {
-            			expiresIn: 10080 // in seconds
-          			});
-					
-					user.jwt.token = token;
+		
+					user.jwt.token = generateJWT(userToken);
 					
 					user.save(function(err){
 						if(err)
@@ -124,6 +121,13 @@ module.exports = function(passport) {
 		    					user.facebook.token = accessToken;
 		    					user.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
 		    					//user.facebook.email = profile.emails[0].value;
+
+		    					var userToken = {
+									id : user.id
+								}
+		
+								user.jwt.token = generateJWT(userToken);
+
 		    					user.save(function(err){
 		    						if(err)
 		    							throw err;
@@ -139,11 +143,19 @@ module.exports = function(passport) {
 		    				newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
 		    				//newUser.facebook.email = profile.emails[0].value;
 
+		    				var newUserToken = {
+									id : profile.id
+								}
+		
+							newUser.jwt.token = generateJWT(newUserToken);
+
 		    				newUser.save(function(err){
 		    					if(err)
 		    						throw err;
 		    					return done(null, newUser);
-		    				})
+		    				});
+
+
 		    			}
 		    		});
 	    		}
@@ -155,6 +167,12 @@ module.exports = function(passport) {
 	    			user.facebook.token = accessToken;
 	    			user.facebook.name = profile.displayName;
 	    			//user.facebook.email = profile.emails[0].value;
+
+	    			var userToken = {
+									id : user.id
+								}
+		
+					user.jwt.token = generateJWT(userToken);
 
 	    			user.save(function(err){
 	    				if(err)
@@ -187,6 +205,14 @@ module.exports = function(passport) {
 		    					user.google.token = accessToken;
 		    					user.google.name = profile.displayName;
 		    					user.google.email = profile.emails[0].value;
+
+		    					var userToken = {
+									id : user.id
+								}
+		
+								user.jwt.token = generateJWT(userToken);
+
+
 		    					user.save(function(err){
 		    						if(err)
 		    							throw err;
@@ -201,11 +227,17 @@ module.exports = function(passport) {
 		    				newUser.google.name = profile.displayName;
 		    				newUser.google.email = profile.emails[0].value;
 
+		    				var newUserToken = {
+									id : profile.id
+								}
+		
+							newUser.jwt.token = generateJWT(newUserToken);
+
 		    				newUser.save(function(err){
 		    					if(err)
 		    						throw err;
 		    					return done(null, newUser);
-		    				})
+		    				});
 		    			}
 		    		});
 	    		} else {
@@ -214,6 +246,13 @@ module.exports = function(passport) {
 					user.google.token = accessToken;
 					user.google.name = profile.displayName;
 					user.google.email = profile.emails[0].value;
+
+					var userToken = {
+									id : user.id
+								}
+		
+					user.jwt.token = generateJWT(userToken);
+
 
 					user.save(function(err){
 						if(err)
@@ -246,5 +285,13 @@ module.exports = function(passport) {
 	      } 
 	    });
 	}));
+
+	function generateJWT(id) {
+		var token = jwt.sign(id, configAuth.secret, {
+            expiresIn: 60 * 60 * 24 * 30 // in seconds (1 month)
+        });
+        return token;
+	}
+
 
 };
