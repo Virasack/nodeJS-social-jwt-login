@@ -1,7 +1,8 @@
 module.exports = function(router, passport){
 	//localhost:8080/auth/
 	router.get('/', function(req, res){
-		res.render('index.ejs');
+		//res.render('index.ejs');
+		//res.sendFile('index.html', { root: "./public" } );
 	});
 	
 	//localhost:8080/auth/login

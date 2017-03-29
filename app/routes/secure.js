@@ -12,12 +12,16 @@ module.exports = function(router, passport){
 	});
 
 	router.get('/profile', function(req, res){
-		res.render('profile.ejs', { user: req.user });
+		//res.render('profile.ejs', { user: req.user });
+		//res.redirect('/profileview');
+		//res.json({message: "Success!"});
+		res.sendFile('index.html', { root: "./public" } );
+		//res.send('hello world');
 	});
 
-	router.get('/*', function(req, res){
-		res.redirect('/profile');
-	})
+	 /*router.get('/*', function(req, res){
+	 	res.redirect('/profile');
+	 });*/
 
 	
 

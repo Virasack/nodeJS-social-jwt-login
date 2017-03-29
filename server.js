@@ -37,9 +37,11 @@ app.use(function(req, res, next){
 	next();
 });
 
+//Serve all the angular app
+app.use(express.static('public'));
+app.use(express.static('libs'));
 
-app.set('view engine', 'ejs');
-
+//app.set('view engine', 'ejs');
 var api = express.Router();
 require('./app/routes/api.js')(api, passport);
 app.use('/api', api);

@@ -1,0 +1,16 @@
+{
+  "name": "social-login-jwt",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Nicolas Bovorasmy"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Virasack/social-login-jwt",
+  "dependencies": {
+    "angular": "angularjs#^1.6.3",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "angular-route": "^1.6.3"
+  }
+}
