@@ -1,0 +1,20 @@
+<div class="container">
+
+      <form class="form-signin" ng-submit="userLocalSignUp()">
+        <h2 class="form-signin-heading">Peekus Sign Up</h2>
+        <br>
+        <div class="alert alert-warning" role="alert" ng-show="badEmail">
+          <strong>Oups!</strong> Enter a correct email
+        </div>
+        <label>Enter your Email address</label>
+        <input type="text" ng-model="signUpCredentials.email" class="form-control" placeholder="Enter an Email address" required autofocus>
+        <br>
+        <label>Enter your Password</label>
+        <input type="password" ng-model="signUpCredentials.password" class="form-control" placeholder="Choose a Password" required>
+
+        <button class="btn btn-lg btn-success btn-block" type="submit">Sign up</button>
+        <br><br>
+        <p><a ng-href="#/">Back to Login Page</a></p>
+      </form>
+      
+</div> 

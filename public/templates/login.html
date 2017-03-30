@@ -1,12 +1,19 @@
 <div class="container">
 
-      <form class="form-signin" action="/auth/login" method="post">
+      <form class="form-signin" ng-submit="userLocalLogin()">
         <h2 class="form-signin-heading">Peekus Login</h2>
         <br>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" name="email" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="text" name="password" class="form-control" placeholder="Password" required>
+        <div class="alert alert-danger" role="alert" ng-show="wrongEmail">
+          <strong>Oups!</strong> No Email Found
+        </div>
+        <div class="alert alert-danger" role="alert" ng-show="wrongPassword">
+          <strong>Oups!</strong> Wrong Password
+        </div>
+        <label>Email address</label>
+        <input type="text" ng-model="credentials.email" class="form-control" placeholder="Email address" required autofocus>
+        <br>
+        <label>Password</label>
+        <input type="password" ng-model="credentials.password" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
@@ -14,9 +21,11 @@
         </div>
         <button class="btn btn-lg btn-success btn-block" type="submit">Log in</button>
         <br>
-        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Login Facebook</a>
-        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Logih Google</a>
-
+        <a ng-href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Login Facebook</a>
+        <a ng-href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Login Google</a>
+        <br><br>
+        <p>Don't have an account? <a ng-href="#/signup">Please Sign Up</a></p>
       </form>
+
       
 </div> 

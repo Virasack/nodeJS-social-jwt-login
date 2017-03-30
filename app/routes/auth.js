@@ -3,28 +3,35 @@ module.exports = function(router, passport){
 	router.get('/', function(req, res){
 		//res.render('index.ejs');
 		//res.sendFile('index.html', { root: "./public" } );
+		//console.log(req.flash('loginMessage'));
+
 	});
 	
 	//localhost:8080/auth/login
 	router.get('/login', function(req, res){
-		res.render('login.ejs', { message: req.flash('loginMessage') });
+
+		//res.render('login.ejs', { message: req.flash('loginMessage') });
+		res.send(req.flash('loginMessage'));
+
 	});
 	
 	router.post('/login', passport.authenticate('local-login', {
 		successRedirect: '/profile',
-		failureRedirect: '/login',
+		failureRedirect: '/auth/login',
 		failureFlash: true
 	}));
 
 	//localhost:8080/auth/signup
 	router.get('/signup', function(req, res){
-		res.render('signup.ejs', { message: req.flash('signupMessage') });
+		console.log('zfefzefe');
+		res.redirect('/signup');
+		//res.render('signup.ejs', { message: req.flash('signupMessage') });
 	});
 
 
 	router.post('/signup', passport.authenticate('local-signup', {
 		successRedirect: '/',
-		failureRedirect: '/signup',
+		failureRedirect: '/auth/signup',
 		failureFlash: true
 	}));
 	

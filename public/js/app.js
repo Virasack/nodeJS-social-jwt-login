@@ -1,24 +1,25 @@
-
 (function(){
-  var app = angular.module('peekus', ['ngRoute']);
+  var app = angular.module('peekus', ['ngRoute' ,'peekus.login-ctrl', 'peekus.login-factory', 'peekus.signup-ctrl','peekus.signup-factory']);
 
-  app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
+  app.config(function($routeProvider, $locationProvider){
     
-    $routeProvider.when('/', {
-      templateUrl: 'templates/login.html'
-    });
+    $locationProvider.hashPrefix('');
 
-
-
-    $routeProvider.when('/profile', {
-       templateUrl: 'templates/profile.html'
-    });
-
-    $routeProvider.otherwise({
+    $routeProvider
+    .when('/', {
+      templateUrl: './templates/login.html',
+      controller:'LoginCtrl'
+    })
+    .when('/signup', {
+       templateUrl: './templates/signup.html',
+       controller:'SignUpCtrl'
+    })
+    .otherwise({
       redirectTo: '/'
     });
 
 
-  }]);
+  });
 
 }());
+
