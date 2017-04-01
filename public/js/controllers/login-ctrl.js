@@ -1,12 +1,19 @@
 (function(){
-	var app = angular.module('peekus.login-ctrl', ['peekus.login-factory']);
+	var app = angular.module('peekus.login-ctrl', ['peekus.login-factory','ui.bootstrap','peekus.signup-ctrl']);
 
-	app.controller('LoginCtrl', function($rootScope, $scope, LoginFactory, $http){
+	app.controller('LoginCtrl', function($rootScope, $scope, LoginFactory, $http, $log, $uibModal){
 
 		$scope.credentials = {};
 	    $scope.userData = {};
 	    $scope.wrongEmail = false;
 	    $scope.wrongPassword = false;
+
+	    $scope.openSignUpModal = function() {
+	      	var modalInstance = $uibModal.open({
+	          templateUrl: './templates/signup-modal.html',
+	          controller: 'SignUpCtrl'
+	        });
+    	};
 
 		$scope.userLocalLogin = function () {
 
@@ -28,6 +35,16 @@
 		   	});
 		}
 	});
+
+
+	
+
+	// app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance) { 
+	//   $scope.cancel = function() {
+	//     $uibModalInstance.dismiss('cancel');
+	//   };
+	// });
+
 
 }());
 

@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('peekus', ['ngRoute' ,'peekus.login-ctrl', 'peekus.login-factory', 'peekus.signup-ctrl','peekus.signup-factory']);
+  var app = angular.module('peekus', ['ngRoute','peekus.login-ctrl', 'peekus.login-factory', 'peekus.signup-ctrl','peekus.signup-factory', 'ui.bootstrap']);
 
   app.config(function($routeProvider, $locationProvider){
     

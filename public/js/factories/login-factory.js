@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('peekus.login-factory', []);
+var app = angular.module('peekus.login-factory', ['ui.bootstrap']);
 
 
 

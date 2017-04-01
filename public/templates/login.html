@@ -1,13 +1,16 @@
 <div class="container">
 
       <form class="form-signin" ng-submit="userLocalLogin()">
-        <h2 class="form-signin-heading">Peekus Login</h2>
+        <h2 class="form-signin-heading">Peekus login</h2>
         <br>
         <div class="alert alert-danger" role="alert" ng-show="wrongEmail">
-          <strong>Oups!</strong> No Email Found
+          <strong>Oups!</strong> No email found
         </div>
         <div class="alert alert-danger" role="alert" ng-show="wrongPassword">
-          <strong>Oups!</strong> Wrong Password
+          <strong>Oups!</strong> Wrong password
+        </div>
+        <div class="alert alert-success" role="alert" ng-show="successSignUp">
+          <strong>Congrats!</strong> You have successfully sign up to Peekus! Now please, log in!
         </div>
         <label>Email address</label>
         <input type="text" ng-model="credentials.email" class="form-control" placeholder="Email address" required autofocus>
@@ -19,13 +22,20 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-success btn-block" type="submit">Log in</button>
+        <button class="btn btn-success btn-lg btn-block" type="submit">Log in</button>
         <br>
-        <a ng-href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Login Facebook</a>
-        <a ng-href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Login Google</a>
+        <div class="row">
+          <div class="col-md-6">
+           <button ng-href="/auth/facebook" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Login Facebook</button>
+          </div>
+          <div class="col-md-6">
+            <button ng-href="/auth/facebook" class="btn btn-danger btn-block"><span class="fa fa-google-plus"></span> Login Google</button>
+          </div>
+        </div>
         <br><br>
-        <p>Don't have an account? <a ng-href="#/signup">Please Sign Up</a></p>
-      </form>
 
+        <p>Don't have an account? <a role="button" ng-click="openSignUpModal()">Please sign up</a></p>
+      </form>
+      
       
 </div> 
